@@ -7,6 +7,7 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import MyReview from "../components/MyReview";
 import ServiceDetails from "../components/ServiceDetails";
+import SignUp from "../components/SignUp";
 import Main from "../layout/Main";
 
 export const route = createBrowserRouter([ 
@@ -46,6 +47,10 @@ export const route = createBrowserRouter([
         {
             path:'/login',
             element:<Login></Login>
+        },
+        {
+            path:'/signUp',
+            element:<SignUp></SignUp>
         }
     ]
    }

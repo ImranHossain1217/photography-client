@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../assets/login.png";
 
-const Login = () => {
+const SignUp = () => {
   return (
     <div>
       <div className="hero min-h-screen py-20">
@@ -12,7 +12,18 @@ const Login = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
-              <h1 className="text-5xl font-bold text-center mt-5">Login</h1>
+              <h1 className="text-5xl font-bold text-center mt-5">Sign Up</h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  name="name"
+                  className="input input-bordered"
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -35,22 +46,17 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <Link href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </Link>
-                </label>
               </div>
               <div className="form-control mt-6">
                 <button type="submit" className="btn btn-warning">
-                  Login
+                  Sign Up
                 </button>
               </div>
             </form>
             <p className="text-center mb-5">
-              Have an account?
-              <Link to="/signUp" className="font-semibold text-orange-600">
-                Sign Up
+              Already have an account?
+              <Link to="/login" className="font-semibold text-orange-600">
+                Log In
               </Link>
             </p>
           </div>
@@ -60,4 +66,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

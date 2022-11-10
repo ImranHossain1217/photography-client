@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo/photography.png";
+import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const menuItems = (
     <>
       <li className="font-semibold">
@@ -25,6 +27,11 @@ const Header = () => {
       </li>
     </>
   );
+
+  const handleLogOut = () => {
+    logOut();
+  };
+
   return (
     <div className="navbar py-5 px-10 mb-2 bg-base-100">
       <div className="navbar-start">
@@ -60,7 +67,15 @@ const Header = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <button className="font-semibold"><Link to="/login">Log In</Link></button>
+        {user?.email ? (
+          <button onClick={handleLogOut} className="font-semibold">
+            <Link to="/login">Sign Out</Link>
+          </button>
+        ) : (
+          <button className="font-semibold">
+            <Link to="/login">Log In</Link>
+          </button>
+        )}
       </div>
     </div>
   );

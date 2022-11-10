@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../assets/login.png";
+import { AuthContext } from "../context/AuthProvider";
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext);
+
+    const handleCreateUser = (e) => {
+         e.preventDefault();
+
+         const form = e.target;
+         const email = form.email.value;
+         const password = form.password.value;
+
+         createUser(email,password)
+         .then(result => {
+            const user = result.user;
+            form.reset();
+         })
+         .catch(err => console.error(err))
+    }
   return (
     <div>
       <div className="hero min-h-screen py-20">
@@ -11,7 +28,7 @@ const SignUp = () => {
             <img className="w-3/4" src={loginImg} alt="login-img" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleCreateUser} className="card-body">
               <h1 className="text-5xl font-bold text-center mt-5">Sign Up</h1>
               <div className="form-control">
                 <label className="label">

@@ -1,6 +1,6 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ServiceDetails = () => {
   const { title, img, price, rating, desc } = useLoaderData();
@@ -24,7 +24,9 @@ const ServiceDetails = () => {
             {desc}
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-warning">Add Review</button>
+           <Link to='/addReview'>
+           <button className="btn btn-warning">Add Review</button>
+           </Link>
           </div>
         </div>
       </div>

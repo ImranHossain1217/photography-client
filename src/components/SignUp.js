@@ -1,25 +1,28 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.png";
 import { AuthContext } from "../context/AuthProvider";
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
+  const Navigate = useNavigate();
 
-    const handleCreateUser = (e) => {
-         e.preventDefault();
+  const handleCreateUser = (e) => {
+    e.preventDefault();
 
-         const form = e.target;
-         const email = form.email.value;
-         const password = form.password.value;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-         createUser(email,password)
-         .then(result => {
-            const user = result.user;
-            form.reset();
-         })
-         .catch(err => console.error(err))
-    }
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        form.reset();
+        alert("Sign Up successfully");
+        Navigate("/login");
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div>
       <div className="hero min-h-screen py-20">

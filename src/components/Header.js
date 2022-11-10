@@ -7,7 +7,9 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const menuItems = (
     <>
-      <li className="font-semibold">
+      {
+        user?.email ? <>
+        <li className="font-semibold">
         <Link to="/">Home</Link>
       </li>
       <li className="font-semibold">
@@ -17,14 +19,32 @@ const Header = () => {
         <Link to="/services">Service</Link>
       </li>
       <li className="font-semibold">
+        <Link to="/blog">Blog</Link>
+      </li>
+      <li className="font-semibold">
         <Link to="/myreview">My Review</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/addService">Add Service</Link>
+      </li>
+        </>
+        :
+        <>
+        <li className="font-semibold">
+        <Link to="/">Home</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/about">About</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/services">Service</Link>
       </li>
       <li className="font-semibold">
         <Link to="/blog">Blog</Link>
       </li>
-      <li className="font-semibold">
-        <Link to="/contact">Contact</Link>
-      </li>
+        </>
+      }
+     
     </>
   );
 

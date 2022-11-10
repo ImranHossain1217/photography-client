@@ -4,7 +4,6 @@ import AllService from "../components/AllService";
 import Blog from "../components/Blog";
 import Home from "../components/Home";
 import MyReview from "../components/MyReview";
-import Service from "../components/Service";
 import ServiceDetails from "../components/ServiceDetails";
 import Main from "../layout/Main";
 
@@ -35,7 +34,8 @@ export const route = createBrowserRouter([
         },
         {
             path:'/details/:id',
-            element:<ServiceDetails></ServiceDetails>
+            element:<ServiceDetails></ServiceDetails>,
+            loader:({params}) => fetch(`http://localhost:5000/services/${params.id}`)
         }
     ]
    }

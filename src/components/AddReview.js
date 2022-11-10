@@ -9,10 +9,23 @@ const AddReview = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const message = form.message.value;
-        console.log(name,email,photo,message);
         const review = {
-            
-        }
+            name,
+            email,
+            photo,
+            message
+        };
+    //post review
+
+        fetch('http://localhost:5000/reviews',{
+          method:"POST",
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
   return (
     <div className="w-9/12 mx-auto my-5">

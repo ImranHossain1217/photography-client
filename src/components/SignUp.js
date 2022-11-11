@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.png";
 import { AuthContext } from "../context/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import useTitle from "../hooks/useTitle";
 
 const SignUp = () => {
   const { createUser, SignUpGoogle } = useContext(AuthContext);
   const Navigate = useNavigate();
+  useTitle('SignUp');
 
   const handleCreateUser = (e) => {
     e.preventDefault();

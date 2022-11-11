@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.png";
 import { AuthContext } from "../context/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
   const { userLogin } = useContext(AuthContext);
   const location = useLocation();
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
+  useTitle('Login');
 
   let from = location.state?.from?.pathname || "/";
 

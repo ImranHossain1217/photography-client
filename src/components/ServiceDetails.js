@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 import Review from "./Review";
 
 const ServiceDetails = () => {
   const { title, img, price, rating, desc } = useLoaderData();
   const [reviews,setReviews] = useState([]);
+  useTitle('Service Details');
 
     useEffect(()=> {
       fetch('http://localhost:5000/reviews')

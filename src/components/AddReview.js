@@ -1,6 +1,9 @@
 import React from "react";
+import useTitle from "../hooks/useTitle";
 
 const AddReview = () => {
+  useTitle('Addreview');
+  
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

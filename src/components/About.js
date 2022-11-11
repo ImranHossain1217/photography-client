@@ -1,7 +1,10 @@
 import React from "react";
 import aboutImg from "../assets/about.jpg";
+import useTitle from "../hooks/useTitle";
 
 const About = () => {
+  useTitle('About');
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="hero min-h-screen">

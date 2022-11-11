@@ -1,32 +1,31 @@
 import React from "react";
 
 const AddReview = () => {
-
-    const handleReviewSubmit = (e)=> {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const photo = form.photo.value;
-        const message = form.message.value;
-        const review = {
-            name,
-            email,
-            photo,
-            message
-        };
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const message = form.message.value;
+    const review = {
+      name,
+      email,
+      photo,
+      message,
+    };
     //post review
 
-        fetch('http://localhost:5000/reviews',{
-          method:"POST",
-          headers:{
-            'content-type':'application/json'
-          },
-          body:JSON.stringify(review)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-    }
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className="w-9/12 mx-auto my-5">
       <h2 className="text-3xl font-semibold uppercase text-center my-5">
@@ -39,12 +38,14 @@ const AddReview = () => {
             placeholder="Your Name"
             className="input input-bordered my-3 w-full"
             name="name"
+            required
           />
           <input
             type="email"
             placeholder="Your Email"
             className="input input-bordered my-3 w-full"
             name="email"
+            required
           />
         </div>
         <input
@@ -52,11 +53,13 @@ const AddReview = () => {
           placeholder="Photo Url"
           className="input input-bordered mb-3 w-full"
           name="photo"
+          required
         />
         <textarea
           className="textarea textarea-bordered w-full h-24"
           placeholder="message"
           name="message"
+          required
         ></textarea>
         <input type="submit" className="btn btn-warning" value="Send Review" />
       </form>

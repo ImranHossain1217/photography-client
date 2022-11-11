@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.png";
 import { AuthContext } from "../context/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, SignUpGoogle } = useContext(AuthContext);
   const Navigate = useNavigate();
 
   const handleCreateUser = (e) => {
@@ -20,6 +21,15 @@ const SignUp = () => {
         form.reset();
         alert("Sign Up successfully");
         Navigate("/login");
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleSignUpGoogle = () => {
+    SignUpGoogle()
+      .then((result) => {
+        const user = result.user;
+        Navigate("/");
       })
       .catch((err) => console.error(err));
   };
@@ -65,6 +75,7 @@ const SignUp = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control mt-6">
@@ -79,6 +90,14 @@ const SignUp = () => {
                 Log In
               </Link>
             </p>
+            <div className="m-5">
+              <button
+                className="btn btn-primary w-full"
+                onClick={handleSignUpGoogle}
+              >
+                <FaGoogle className="mr-2"></FaGoogle> SignUp With Google{" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>

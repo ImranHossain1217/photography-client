@@ -40,7 +40,7 @@ export const route = createBrowserRouter([
         {
             path:'/details/:id',
             element:<ServiceDetails></ServiceDetails>,
-            loader:({params}) => fetch(`https://photography-server-beta.vercel.app/${params.id}`)
+            loader:({params}) => fetch(`https://photography-server-beta.vercel.app/services/${params.id}`)
         },
         {
             path:'addReview',

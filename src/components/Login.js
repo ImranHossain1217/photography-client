@@ -24,6 +24,7 @@ const Login = () => {
         const user = result.user;
         form.reset();
         Navigate(from, {replace: true})
+        alert('Login Successfully')
       })
       .catch((err) => console.error(err));
   };

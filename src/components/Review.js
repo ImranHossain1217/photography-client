@@ -6,7 +6,7 @@ const Review = ({ review }) => {
   const handleReviewDelete = (id) => {
     const confirm = window.confirm("Are You Sure, Delete Your Review?");
     if (confirm) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://photography-server-beta.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

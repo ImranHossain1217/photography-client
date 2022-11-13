@@ -8,7 +8,7 @@ const MyReview = () => {
   useTitle('Myreview');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+    fetch(`https://photography-server-beta.vercel.app/reviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyreview(data));
   }, [user?.email]);
@@ -16,7 +16,7 @@ const MyReview = () => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are You Sure, Delete Your Review??");
     if (confirm) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://photography-server-beta.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json)
@@ -50,20 +50,7 @@ const MyReview = () => {
                       Edit
                     </button>
                     <button onClick={() => handleDelete(review._id)} className="btn btn-square btn-outline mt-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
+                      X
                     </button>
                   </td>
                 </tr>

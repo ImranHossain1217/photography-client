@@ -3,7 +3,7 @@ import useTitle from "../hooks/useTitle";
 
 const AddService = () => {
   useTitle('AddService');
-  
+
   const handleAddService = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,7 +21,7 @@ const AddService = () => {
       desc,
     };
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://photography-server-beta.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,12 @@ const AddService = () => {
       body: JSON.stringify(addService),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          form.reset();
+          alert('Service added Succeessfully')
+        }
+      });
   };
   return (
     <div className="w-9/12 mx-auto my-5">

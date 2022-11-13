@@ -19,7 +19,7 @@ const AddReview = () => {
     };
     //post review
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://photography-server-beta.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,7 +27,12 @@ const AddReview = () => {
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if(data.acknowledged){
+          form.reset();
+          alert('Review Add Successfully');
+        }
+      });
   };
   return (
     <div className="w-9/12 mx-auto my-5">
